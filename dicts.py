@@ -2,7 +2,7 @@ def create_inventory(items):
     #Creo un diccionario vacío  
     inventory = {}
     #Recorrer los elementos de la lista
-    for item in items
+    for item in items:
         #Si el artículo ya está en el diccionario, incrementar su valor
         if item in inventory:
             inventory[item] += 1
@@ -15,23 +15,27 @@ def create_inventory(items):
 
 def add_items(inventory, items):
 
-    if item in items:
-        inventory[item] += 1
+    for item in items:
 
-    else:
-        inventory[item] = 1
+        if item in inventory:
+            inventory[item] += 1
+
+        else:
+            inventory[item] = 1
    
     return inventory
 
 
 def decrement_items(inventory, items):
 
-    inventory = {}
-
-    for item in items
+    for item in items:
 
         if item in inventory:
-            inventory[item] -= 1
+            value = inventory[item]
+
+            if value > 0:
+
+                inventory[item] -= 1
 
         else:
             inventory[item] = 1
@@ -48,13 +52,9 @@ def remove_item(inventory, item):
 
 def list_inventory(inventory):
 
-    for item in list_inventory.items():
+    my_inventory = []
 
-        key = item[0]
-        value = item[1]
-
-        print(key)
-        print(value)
-        
-    return inventory
-
+    for key, value in inventory.items():
+        if value > 0:
+            my_inventory.append((key, value))
+    return my_inventory
